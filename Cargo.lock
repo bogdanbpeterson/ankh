@@ -45,6 +45,7 @@ dependencies = [
 name = "ankh"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "rocket",
  "shuttle-rocket",
  "shuttle-runtime",
