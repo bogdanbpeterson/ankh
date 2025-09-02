@@ -174,7 +174,7 @@ async fn handle_update(
     if let teloxide::types::UpdateKind::Message(message) = update.kind {
         if message.chat.id != ChatId(secrets.me_id.parse()?) {
             bot.send_message(
-                message.chat.id,
+                secrets.me_id.clone(),
                 format!(
                     "Someone tried to use this bot {}",
                     message
@@ -184,6 +184,8 @@ async fn handle_update(
                 ),
             )
             .await?;
+            bot.send_message(message.chat.id, "Welcome! What can do you for?")
+                .await?;
             return Ok(());
         }
 
